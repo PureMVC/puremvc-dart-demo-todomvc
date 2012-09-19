@@ -1,8 +1,8 @@
 class TodoProxy extends MVCProxy
 {
   static const String NAME            = "TodoProxy";
-  static const String TODOS_FILTERED  = "{NAME}/todos/filtered";
-  static const String LOCAL_STORAGE   = "{NAME}/todos-puremvc-dart";
+  static const String TODOS_FILTERED  = "/todos/filtered";
+  static const String LOCAL_STORAGE   = "/todos-puremvc-dart";
   
   // Accessors that cast the data object to the correct types
   CompoundVO get compoundVO() { return getData( ); }
