@@ -6,8 +6,11 @@
 // PureMVC Framework for Dart
 #import('https://raw.github.com/PureMVC/puremvc-dart-multicore-framework/master/src/puremvc.dart');
 
-// Hashroute utility
+// Hashroute utility  - Thanks, Andreas Krennmair. https://github.com/akrennmair.
 #import('https://raw.github.com/cliffhall/hashroute.dart/master/hashroute.dart');
+
+// JsonObject - Thanks, Chris Buckett. https://github.com/chrisbu
+#import('https://raw.github.com/cliffhall/dartwatch-JsonObject/master/JsonObject.dart');
 
 // MODEL
 #source('src/model/proxy/TodoProxy.dart');

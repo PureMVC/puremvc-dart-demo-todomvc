@@ -32,17 +32,18 @@ class TodoProxy extends MVCProxy
   void loadData() {
     if ( window.localStorage.containsValue( LOCAL_STORAGE ) == false) {
       saveData();
-    }
-    var storageObject = JSON.parse( window.localStorage[ LOCAL_STORAGE ] );
-    todos = storageObject.todos;
-    filter = storageObject.filter;
+    }  
+    String serializedStorageObject = window.localStorage[ LOCAL_STORAGE ];
+    CompoundVO storageObject = new CompoundVO.fromString( serializedStorageObject );
+    setData( storageObject );
     computeStats();
   }
 
   // Save data to local storage
   void saveData() {
-    CompoundVO storageObject = new CompoundVO( todos, stats, filter );
-    window.localStorage[ LOCAL_STORAGE ] = JSON.stringify( storageObject );
+    CompoundVO storageObject = new CompoundVO.assemble( todos, stats, filter );
+    String serializedStorageObject = storageObject.toJson();
+    window.localStorage[ LOCAL_STORAGE ] = serializedStorageObject;
   }
   
   // Compute the stats
@@ -71,7 +72,8 @@ class TodoProxy extends MVCProxy
       i--;
     }
     
-    CompoundVO compoundVO = new CompoundVO( filtered, stats, filter );
+    // Notify the view with the filtered todo list 
+    CompoundVO compoundVO = new CompoundVO.assemble( filtered, stats, filter );
     sendNotification( TODOS_FILTERED, compoundVO );                            
   }
 
@@ -147,7 +149,7 @@ class TodoProxy extends MVCProxy
     return completed;
   }
 
-  // Get a universally unique identifier for a todo
+  // Get a unique id for a todo
   String getUuid() {
     int i, random;
     String uuid = '';
