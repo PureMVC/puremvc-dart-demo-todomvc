@@ -2,12 +2,13 @@ class TodoCommand extends MVCSimpleCommand
 {
   void execute( INotification note ) 
   {
-    var proxy = facade.retrieveProxy( TodoProxy.NAME );
-    /*
+    TodoProxy proxy = facade.retrieveProxy( TodoProxy.NAME );
     switch( note.getName() ) 
     {
       case AppConstants.ADD_TODO:
-        proxy.addTodo( note.getBody() );
+        String jsonNewTodo =  note.getBody();
+        TodoVO newTodo = new TodoVO.fromString( jsonNewTodo );
+        proxy.addTodo( newTodo );
         break;
         
       case AppConstants.DELETE_TODO:
@@ -31,6 +32,5 @@ class TodoCommand extends MVCSimpleCommand
         break;
         
     }
-    */
   }
 }

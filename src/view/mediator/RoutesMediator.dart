@@ -20,7 +20,7 @@ class RoutesMediator extends MVCMediator
   {
     // Get the default route from the TodoProxy (may come from local storage)
     TodoProxy todoProxy = facade.retrieveProxy( TodoProxy.NAME );
-    String defaultRoute = todoProxy.filter;
+    String currentFilter = todoProxy.filter;
     
     // Add route handlers
     router.addHandlerFunc( ROUTE_ALL, handleRouteChange );
@@ -28,9 +28,29 @@ class RoutesMediator extends MVCMediator
     router.addHandlerFunc( ROUTE_COMPLETED, handleRouteChange );
 
     // Go to the default route
-    router.goTo( defaultRoute );
+    router.goTo( getRouteForFilter( currentFilter ) );
   }
     
+  // Look up Route for Filter
+  String getRouteForFilter( String filter ) {
+    String route;
+    switch ( filter ) {
+      case TodoVO.FILTER_ACTIVE:
+        route = ROUTE_ACTIVE;
+        break;
+        
+      case TodoVO.FILTER_COMPLETED:
+        route = ROUTE_COMPLETED;
+        break;
+        
+      case TodoVO.FILTER_ALL:
+      default:
+        route = ROUTE_ALL;
+        break;
+    }
+    return route;
+  }
+  
   // Handle route changes
   void handleRouteChange( String path, Map<String,String> values ) {
     String filter;
@@ -46,8 +66,7 @@ class RoutesMediator extends MVCMediator
       case ROUTE_ALL:
       default:
         filter = TodoVO.FILTER_ALL;
-        break;
-        
+        break;        
     }
     facade.sendNotification( AppConstants.FILTER_TODOS, filter );
   }

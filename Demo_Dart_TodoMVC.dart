@@ -10,7 +10,8 @@
 #import('https://raw.github.com/cliffhall/hashroute.dart/master/hashroute.dart');
 
 // JsonObject - Thanks, Chris Buckett. https://github.com/chrisbu
-#import('https://raw.github.com/cliffhall/dartwatch-JsonObject/master/JsonObject.dart');
+#import('https://raw.github.com/cliffhall/dartwatch-JsonObject/master/JsonObject.dart');*/
+/*#import('../dartwatch-JsonObject/JsonObject.dart');*/
 
 // MODEL
 #source('src/model/proxy/TodoProxy.dart');

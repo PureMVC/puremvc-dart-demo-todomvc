@@ -2,15 +2,15 @@ class TodoForm
 {
 
   // Fixed elements managed by this view component
-  HtmlElement todoApp;
-  HtmlElement main;
+  Element todoApp;
+  Element main;
   InputElement newTodoField;
   InputElement toggleAllCheckbox;
   UListElement todoList;
-  HtmlElement footer;
-  HtmlElement todoCount;
+  Element footer;
+  Element todoCount;
   ButtonElement clearButton;
-  HtmlElement filters;
+  Element filters;
   AnchorElement filterAll;
   AnchorElement filterActive;
   AnchorElement filterCompleted;
@@ -83,10 +83,11 @@ class TodoForm
     dispatchEvent( AppEvents.DELETE_ITEM, id );
   }
   
-  void dispatchAddTodo( Event event ) {
+  void dispatchAddTodo( KeyboardEvent event ) {
+    if ( event.keyCode != ENTER_KEY ) return;
     TodoVO todo = new TodoVO();
     todo.title = newTodoField.value.trim();
-    if (todo.title != '') dispatchEvent( AppEvents.ADD_ITEM, todo );
+    if (todo.title != '') dispatchEvent( AppEvents.ADD_ITEM, todo.toJson() );
   }
   
   void handleEditTodo( KeyboardEvent event ) {
@@ -130,7 +131,7 @@ class TodoForm
     InputElement checkbox;
     LabelElement label;
     DivElement divDisplay;
-    AnchorElement deleteLink;
+    ButtonElement deleteLink;
     InputElement inputEditTodo;
     LIElement li;
  
@@ -222,8 +223,8 @@ class TodoForm
     Element countDisplay = document.$dom_createElement('strong');
     countDisplay.innerHTML = stats.todoLeft.toString();
     String desc = ( stats.todoLeft == 1) ? 'item' : 'items';
-    String text = ' {desc} left';            
-    todoCount.innerHTML = null;
+    String text = ' ${desc} left';            
+    todoCount.innerHTML = '';
     todoCount.$dom_appendChild(countDisplay);
     todoCount.$dom_appendChild(document.$dom_createTextNode(text));
   }

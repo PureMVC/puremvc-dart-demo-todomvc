@@ -23,7 +23,7 @@ class _CompoundVOImpl extends JsonObject implements CompoundVO {
   // Instance members  
   List<TodoVO> todos;
   StatsVO stats;
-  String filter = TodoVO.FILTER_ALL;
+  String filter;
 
   // need a default, private constructor
   _CompoundVOImpl() {

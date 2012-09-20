@@ -62,6 +62,7 @@ class TodoProxy extends MVCProxy
     List<TodoVO> filtered = [];
  
     while ( i > 0 ) {
+      i--;
       if ( filter === TodoVO.FILTER_ALL ) {    
         filtered.add( todos[ i ] );
       } else if ( todos[i].completed === true && filter === TodoVO.FILTER_COMPLETED ) {
@@ -69,7 +70,6 @@ class TodoProxy extends MVCProxy
       } else if ( todos[i].completed === false && filter === TodoVO.FILTER_ACTIVE ) {
         filtered.add( todos[ i ] );
       }
-      i--;
     }
     
     // Notify the view with the filtered todo list 

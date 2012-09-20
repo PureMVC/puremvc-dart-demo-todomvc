@@ -22,16 +22,12 @@ interface TodoVO default _TodoVOImpl {
 
 class _TodoVOImpl extends JsonObject implements TodoVO {
   // Instance members
-  String id;
-  String title;
-  bool completed;
+  String id = '';
+  String title = '';
+  bool completed = false;
 
   // need a default, private constructor
-  _TodoVOImpl() {
-    this.id = '';
-    this.title = '';
-    this.completed = false;
-  }
+  _TodoVOImpl();
     
   factory _TodoVOImpl.fromString( String jsonString ) {
     return new JsonObject.fromJsonString( jsonString, new _TodoVOImpl() );
@@ -46,7 +42,7 @@ class _TodoVOImpl extends JsonObject implements TodoVO {
     buffer.add('", ');
     
     buffer.add('"title":"');
-    buffer.add(title);
+    buffer.add( title );
     buffer.add('", ');
     
     buffer.add('"completed":');
