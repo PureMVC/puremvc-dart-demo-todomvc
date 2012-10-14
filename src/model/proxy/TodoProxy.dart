@@ -1,17 +1,17 @@
-class TodoProxy extends MVCProxy
+class TodoProxy extends mvc.Proxy
 {
   static const String NAME            = "TodoProxy";
   static const String TODOS_FILTERED  = "/todos/filtered";
   static const String LOCAL_STORAGE   = "/todos-puremvc-dart";
-  
+
   // Accessors that cast the data object to the correct types
   CompoundVO get compoundVO() { return getData( ); }
   void set compoundVO( CompoundVO vo ) { setData( vo ); }
-  
+
   // Todos
   List<TodoVO> get todos() { return compoundVO.todos; }
   void set todos( List<TodoVO> list ) { compoundVO.todos = list; }
-  
+
   // Stats
   StatsVO get stats() { return compoundVO.stats; }
   void set stats( StatsVO vo ) { compoundVO.stats = vo; }
@@ -32,7 +32,7 @@ class TodoProxy extends MVCProxy
   void loadData() {
     if ( window.localStorage.containsValue( LOCAL_STORAGE ) == false) {
       saveData();
-    }  
+    }
     String serializedStorageObject = window.localStorage[ LOCAL_STORAGE ];
     CompoundVO storageObject = new CompoundVO.fromString( serializedStorageObject );
     setData( storageObject );
@@ -45,7 +45,7 @@ class TodoProxy extends MVCProxy
     String serializedStorageObject = storageObject.toJson();
     window.localStorage[ LOCAL_STORAGE ] = serializedStorageObject;
   }
-  
+
   // Compute the stats
   void computeStats() {
     stats.totalTodo        = todos.length;
@@ -57,13 +57,13 @@ class TodoProxy extends MVCProxy
   void filterTodos( String setting ) {
     filter = setting;
     saveData();
-    
+
     int i = todos.length;
     List<TodoVO> filtered = [];
- 
+
     while ( i > 0 ) {
       i--;
-      if ( filter === TodoVO.FILTER_ALL ) {    
+      if ( filter === TodoVO.FILTER_ALL ) {
         filtered.add( todos[ i ] );
       } else if ( todos[i].completed === true && filter === TodoVO.FILTER_COMPLETED ) {
         filtered.add( todos[ i ] );
@@ -71,10 +71,10 @@ class TodoProxy extends MVCProxy
         filtered.add( todos[ i ] );
       }
     }
-    
-    // Notify the view with the filtered todo list 
+
+    // Notify the view with the filtered todo list
     CompoundVO compoundVO = new CompoundVO.assemble( filtered, stats, filter );
-    sendNotification( TODOS_FILTERED, compoundVO );                            
+    sendNotification( TODOS_FILTERED, compoundVO );
   }
 
   // Called whenever the todo list is modified
@@ -107,7 +107,7 @@ class TodoProxy extends MVCProxy
     }
     todosModified();
   }
-  
+
   // Toggle the completed status of all the todos
   void toggleCompleteStatus( bool status ) {
     int i = todos.length-1;
@@ -136,12 +136,12 @@ class TodoProxy extends MVCProxy
     todos.add( newTodo );
     todosModified();
   }
-  
+
   // Get the count of completed todos
   int getCompletedCount() {
     int i = todos.length-1;
     int completed = 0;
-    
+
     while ( i >= 0 ) {
       if ( this.todos[ i ].completed ) completed++;
       i--;
@@ -162,5 +162,5 @@ class TodoProxy extends MVCProxy
       uuid.concat( ( i === 12 ? 4 : (i === 16 ? ( random & 3 | 8 ) : random) ).toString( ) );
     }
     return uuid;
-  }                                                                                                   
+  }
 }

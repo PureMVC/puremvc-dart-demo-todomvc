@@ -1,0 +1,18 @@
+name: TodoMVC
+description: >
+   This demo is a Dart port of the PureMVC implementation of the TodoMVC Project.
+   TodoMVC is a JavaScript application framework comparison demo.
+   Given a standard html template, css, and a plain- vanilla JavaScript reference
+   app (no framework), developers are challenged to produce implementations based
+   upon their favorite MV* framework.
+
+version: 1.0.0
+author: Cliff Hall <cliff.hall@puremvc.org>
+homepage: http://www.puremvc.org
+dependencies:
+  puremvc:
+    git: git://github.com/PureMVC/puremvc-dart-multicore-framework.git
+  hashroute:
+    git: git://github.com/cliffhall/hashroute.dart.git
+  JsonObject:
+    git: git://github.com/cliffhall/dartwatch-JsonObject.git

@@ -4,14 +4,13 @@
 #import('dart:math');
 
 // PureMVC Framework for Dart
-#import('https://raw.github.com/PureMVC/puremvc-dart-multicore-framework/master/src/puremvc.dart');
+#import('package:puremvc/puremvc.dart', prefix:'mvc');
 
 // Hashroute utility  - Thanks, Andreas Krennmair. https://github.com/akrennmair.
-#import('https://raw.github.com/cliffhall/hashroute.dart/master/hashroute.dart');
+#import('package:hashroute/hashroute.dart', prefix:'hr');
 
 // JsonObject - Thanks, Chris Buckett. https://github.com/chrisbu
-#import('https://raw.github.com/cliffhall/dartwatch-JsonObject/master/JsonObject.dart');*/
-/*#import('../dartwatch-JsonObject/JsonObject.dart');*/
+#import('package:JsonObject/JsonObject.dart');
 
 // MODEL
 #source('src/model/proxy/TodoProxy.dart');
@@ -35,9 +34,9 @@
 
 void main()
 {
-  // Get a unique multiton Facade instance for the application 
-  IFacade facade = MVCFacade.getInstance( AppConstants.APP_NAME );
-  
+  // Get a unique multiton Facade instance for the application
+  mvc.IFacade facade = mvc.Facade.getInstance( AppConstants.APP_NAME );
+
   // Startup the application's PureMVC core
   facade.registerCommand( AppConstants.STARTUP, () => new StartupCommand() );
   facade.sendNotification( AppConstants.STARTUP );

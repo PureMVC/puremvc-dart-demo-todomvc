@@ -1,6 +1,6 @@
-class PrepareModelCommand extends MVCSimpleCommand
+class PrepareModelCommand extends mvc.SimpleCommand
 {
-  void execute( INotification note ) 
+  void execute( mvc.INotification note )
   {
     facade.registerProxy( new TodoProxy() );
   }
