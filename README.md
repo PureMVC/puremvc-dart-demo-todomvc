@@ -8,7 +8,7 @@ This demo is a PureMVC port of the [TodoMVC Project](http://todomvc.com), a Java
 ![PureMVC Dart Demo: TodoMVC](http://puremvc.org/pages/images/screenshots/PureMVC-Shot-Dart-TodoMVC.png)
 
 ## Status
-Production - [Version 1.0](https://github.com/PureMVC/puremvc-dart-demo-TodoMVC/blob/master/VERSION)
+In Development - [Version 0.9](https://github.com/PureMVC/puremvc-dart-demo-TodoMVC/blob/master/VERSION)
 
 ## Platforms / Technologies
 * [Google Dart](http://www.dartlang.org)
