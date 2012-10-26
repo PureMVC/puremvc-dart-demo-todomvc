@@ -1,0 +1,19 @@
+PureMVC Dart Demo - TodoMVC
+--------------------------------------------------------------------------
+Release Date: 9/16/2012
+    Platform: Dart 
+     Version: 0
+    Revision: 9
+      Author: Cliff Hall <cliff.hall@puremvc.org>
+--------------------------------------------------------------------------      
+0.9 - This demo is a port of the PureMVC JavaScript TodoMVC demo
+      (https://github.com/PureMVC/puremvc-js-demo-todomvc) 
+      which is itself an implementation of TodoMVC (http://todomvc.com).
+      
+      The entire thing is ported with no compiler errors or warning in any
+      class. Used Hashroute utility for routing. Currently having an issue 
+      with JSON.stringify() in the TodoProxy where we are unable to 
+      stringify the objects.
+      
+      - Currently has a problem marshaling and unmarshaling the VOs. 
+      
