@@ -1,3 +1,4 @@
+part of todomvc;
 class TodoFormMediator extends mvc.Mediator
 {
   // Name Mediator will be registered as
@@ -7,7 +8,7 @@ class TodoFormMediator extends mvc.Mediator
   TodoFormMediator( TodoForm viewComponent ):super( NAME, viewComponent ){}
 
   // Accessors to cast viewComponent to the correct type for this Mediator
-  TodoForm get todoForm() { return viewComponent; }
+  TodoForm get todoForm { return viewComponent; }
   void set todoForm( TodoForm component ) { viewComponent = component; }
 
   // Called when Mediator is registered

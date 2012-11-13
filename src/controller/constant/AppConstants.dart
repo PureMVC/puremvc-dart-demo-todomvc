@@ -1,3 +1,4 @@
+part of todomvc;
 class AppConstants
 {
   // The name of the PureMVC core

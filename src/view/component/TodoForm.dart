@@ -1,3 +1,4 @@
+part of todomvc;
 class TodoForm
 {
 
@@ -60,7 +61,7 @@ class TodoForm
   {
     //CustomEvent event = new CustomEvent( eventName, true, true, data );
     CustomEvent event = document.$dom_createEvent( 'CustomEvent' );
-    event.initCustomEvent( eventName, true, true, data );
+    event.$dom_initCustomEvent( eventName, true, true, data );
     todoApp.$dom_dispatchEvent( event );
   }
 

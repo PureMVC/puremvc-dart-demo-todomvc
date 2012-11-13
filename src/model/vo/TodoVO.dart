@@ -1,36 +1,21 @@
-interface TodoVO default _TodoVOImpl {
+part of todomvc;
 
+class TodoVO extends JsonObject {
   // Instance members
-  String id;
-  String title;
-  bool completed;
+  String id = '';
+  String title = '';
+  bool completed = false;
 
   // Filter settings
   static const String FILTER_ALL              = "filter/setting/all";
   static const String FILTER_ACTIVE           = "filter/setting/active";
   static const String FILTER_COMPLETED        = "filter/setting/completed";
 
-  // the from JsonString constructor
-  TodoVO.fromString( String jsonString );
-
-  // the default constructor
+  // need a default, private constructor
   TodoVO();
 
-  // Serialize to JSON
-  String toJson();
-}
-
-class _TodoVOImpl extends JsonObject implements TodoVO {
-  // Instance members
-  String id = '';
-  String title = '';
-  bool completed = false;
-
-  // need a default, private constructor
-  _TodoVOImpl();
-
-  factory _TodoVOImpl.fromString( String jsonString ) {
-    return new JsonObject.fromJsonString( jsonString, new _TodoVOImpl() );
+  factory TodoVO.fromString( String jsonString ) {
+    return new JsonObject.fromJsonString( jsonString, new TodoVO() );
   }
 
   // Serialize this object to JSON
@@ -39,7 +24,7 @@ class _TodoVOImpl extends JsonObject implements TodoVO {
     StringBuffer buffer = new StringBuffer();
     buffer.add('{');
     buffer.add('"id":"');
-    buffer.add(id);
+    buffer.add( id );
     buffer.add('", ');
 
     buffer.add('"title":"');
@@ -47,7 +32,7 @@ class _TodoVOImpl extends JsonObject implements TodoVO {
     buffer.add('", ');
 
     buffer.add('"completed":');
-    buffer.add(completed.toString());
+    buffer.add( completed.toString() );
     buffer.add('}');
 
     return buffer.toString();

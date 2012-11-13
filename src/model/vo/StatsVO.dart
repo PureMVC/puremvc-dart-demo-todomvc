@@ -1,36 +1,21 @@
-interface StatsVO default _StatsVOImpl {
-  
-  // Instance members
-  int totalTodo;
-  int todoLeft;
-  int todoCompleted;
+part of todomvc;
 
-  // the from JsonString constructor
-  StatsVO.fromString( String jsonString );
+class StatsVO extends JsonObject {
 
-  // the default constructor
-  StatsVO();
-  
-  // Serialize to JSON
-  String toJson();
-}
-
-class _StatsVOImpl extends JsonObject implements StatsVO {
-  
   // Instance members
   int totalTodo;
   int todoLeft;
   int todoCompleted;
 
   // need a default, private constructor
-  _StatsVOImpl() {
+  StatsVO() {
     this.totalTodo = 0;
     this.todoLeft = 0;
     this.todoCompleted = 0;
   }
-    
-  factory _StatsVOImpl.fromString( String jsonString ) {
-    return new JsonObject.fromJsonString( jsonString, new _StatsVOImpl() ) ;
+
+  factory StatsVO.fromString( String jsonString ) {
+    return new JsonObject.fromJsonString( jsonString, new StatsVO() ) ;
   }
 
   // Serialize this object to JSON

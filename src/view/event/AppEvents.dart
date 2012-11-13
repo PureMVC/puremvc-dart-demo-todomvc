@@ -1,4 +1,5 @@
-class AppEvents 
+part of todomvc;
+class AppEvents
 {
   static const String TOGGLE_COMPLETE_ALL = "/items/complete/toggle/all";
   static const String CLEAR_COMPLETED     = "/items/complete/clear";

@@ -1,51 +1,33 @@
-interface CompoundVO default _CompoundVOImpl {
-  
-  // Instance members  
-  List<TodoVO> todos;
-  StatsVO stats;
-  String filter;
+part of todomvc;
 
-  // Constructor: From JsonString
-  CompoundVO.fromString( String jsonString );
-  
-  // Constructor: Assemble a CompoundVO
-  CompoundVO.assemble( List<TodoVO> todos, StatsVO stats, String filter );
+class CompoundVO extends JsonObject {
 
-  // Constructor
-  CompoundVO();
-  
-  // Serialize to JSON
-  String toJson();
-}
-
-class _CompoundVOImpl extends JsonObject implements CompoundVO {
-  
-  // Instance members  
+  // Instance members
   List<TodoVO> todos;
   StatsVO stats;
   String filter;
 
   // need a default, private constructor
-  _CompoundVOImpl() {
+  CompoundVO() {
     this.todos = [];
     this.stats = new StatsVO();
     this.filter = TodoVO.FILTER_ALL;
   }
 
   // The fromString factory method
-  factory _CompoundVOImpl.fromString( String jsonString ) {
-    return new JsonObject.fromJsonString( jsonString, new _CompoundVOImpl() );
+  factory CompoundVO.fromString( String jsonString ) {
+    return new JsonObject.fromJsonString( jsonString, new CompoundVO() );
   }
-  
+
   // The assemble factory method
-  factory _CompoundVOImpl.assemble( List<TodoVO> todos, StatsVO stats, String filter ) {
-    CompoundVO compoundVO = new _CompoundVOImpl();
+  factory CompoundVO.assemble( List<TodoVO> todos, StatsVO stats, String filter ) {
+    CompoundVO compoundVO = new CompoundVO();
     compoundVO.stats = stats;
     compoundVO.filter = filter;
     compoundVO.todos = todos;
     return compoundVO;
   }
-  
+
   // Serialize this object to JSON
   String toJson(){
     StringBuffer buffer = new StringBuffer();

@@ -1,3 +1,4 @@
+part of todomvc;
 class PrepareViewCommand extends mvc.SimpleCommand
 {
   void execute( mvc.INotification note )

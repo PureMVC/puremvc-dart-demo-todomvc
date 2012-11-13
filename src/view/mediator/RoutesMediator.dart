@@ -1,3 +1,4 @@
+part of todomvc;
 class RoutesMediator extends mvc.Mediator
 {
   // Name Mediator will be registered as
@@ -12,7 +13,7 @@ class RoutesMediator extends mvc.Mediator
   RoutesMediator( hr.HashRouter viewComponent ):super( NAME, viewComponent ){}
 
   // Accessors to cast viewComponent to the correct type for this Mediator
-  hr.HashRouter get router() { return viewComponent; }
+  hr.HashRouter get router { return viewComponent; }
   void set router( hr.HashRouter component ) { viewComponent = component; }
 
   // Called when Mediator is registered

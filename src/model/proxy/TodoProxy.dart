@@ -1,3 +1,4 @@
+part of todomvc;
 class TodoProxy extends mvc.Proxy
 {
   static const String NAME            = "TodoProxy";
@@ -5,19 +6,19 @@ class TodoProxy extends mvc.Proxy
   static const String LOCAL_STORAGE   = "/todos-puremvc-dart";
 
   // Accessors that cast the data object to the correct types
-  CompoundVO get compoundVO() { return getData( ); }
+  CompoundVO get compoundVO { return getData( ); }
   void set compoundVO( CompoundVO vo ) { setData( vo ); }
 
   // Todos
-  List<TodoVO> get todos() { return compoundVO.todos; }
+  List<TodoVO> get todos { return compoundVO.todos; }
   void set todos( List<TodoVO> list ) { compoundVO.todos = list; }
 
   // Stats
-  StatsVO get stats() { return compoundVO.stats; }
+  StatsVO get stats { return compoundVO.stats; }
   void set stats( StatsVO vo ) { compoundVO.stats = vo; }
 
   // Filter
-  String get filter() { return compoundVO.filter; }
+  String get filter { return compoundVO.filter; }
   void set filter( String setting ) { compoundVO.filter = setting; }
 
   // Constructor
@@ -63,11 +64,11 @@ class TodoProxy extends mvc.Proxy
 
     while ( i > 0 ) {
       i--;
-      if ( filter === TodoVO.FILTER_ALL ) {
+      if ( identical(filter, TodoVO.FILTER_ALL) ) {
         filtered.add( todos[ i ] );
-      } else if ( todos[i].completed === true && filter === TodoVO.FILTER_COMPLETED ) {
+      } else if ( identical(todos[i].completed, true) && identical(filter, TodoVO.FILTER_COMPLETED) ) {
         filtered.add( todos[ i ] );
-      } else if ( todos[i].completed === false && filter === TodoVO.FILTER_ACTIVE ) {
+      } else if ( identical(todos[i].completed, false) && identical(filter, TodoVO.FILTER_ACTIVE) ) {
         filtered.add( todos[ i ] );
       }
     }
@@ -132,7 +133,8 @@ class TodoProxy extends mvc.Proxy
 
   // Add a todo to the list
   void addTodo( TodoVO newTodo ) {
-    newTodo.id = getUuid();
+    String id = getUuid();
+    newTodo.id = id;
     todos.add( newTodo );
     todosModified();
   }
@@ -152,15 +154,9 @@ class TodoProxy extends mvc.Proxy
   // Get a unique id for a todo
   String getUuid() {
     int i, random;
-    String uuid = '';
-    Random rnd = new Random();
-    for ( i = 0; i < 32; i++ ) {
-      random = rnd.nextInt( 16 );
-      if ( i === 8 || i === 12 || i === 16 || i === 20 ) {
-        uuid.concat('-');
-      }
-      uuid.concat( ( i === 12 ? 4 : (i === 16 ? ( random & 3 | 8 ) : random) ).toString( ) );
-    }
+    Date date = new Date.now();
+    String uuid = "Todo-${date.millisecondsSinceEpoch.toString()}";
     return uuid;
   }
+
 }

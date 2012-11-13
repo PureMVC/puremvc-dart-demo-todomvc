@@ -14,5 +14,5 @@ dependencies:
     git: git://github.com/PureMVC/puremvc-dart-multicore-framework.git
   hashroute:
     git: git://github.com/cliffhall/hashroute.dart.git
-  JsonObject:
+  json_object:
     git: git://github.com/cliffhall/dartwatch-JsonObject.git

@@ -1,3 +1,4 @@
+part of todomvc;
 class StartupCommand extends mvc.MacroCommand
 {
   void initializeMacroCommand()
