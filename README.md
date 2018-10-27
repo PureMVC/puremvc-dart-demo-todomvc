@@ -1,7 +1,7 @@
 ## [PureMVC](http://puremvc.github.com/) [Dart](https://github.com/PureMVC/puremvc-dart-multicore-framework/wiki) Demo - TodoMVC
 This demo is a PureMVC port of the [TodoMVC Project](http://todomvc.com), a JavaScript application framework comparison demo. Given a standard html template, css, and a plain vanilla JavaScript reference app (no framework), developers are challenged to produce implementations base upon their favorite framework. This Dart version is a port of the [PureMVC JavaScript TodoMVC](https://github.com/PureMVC/puremvc-js-demo-todomvc/wiki) implementation.
 
-* [Live Demo](http://darkstar.puremvc.org/content_header.html?url=http://puremvc.org/pages/demos/Dart/Demo_Dart_TodoMVC/&desc=PureMVC%20Dart%20Demo:%20TodoMVC)
+* [Live Demo](http://puremvc.org/pages/demos/Dart/Demo_Dart_TodoMVC/)
 * [Discussion](http://forums.puremvc.org/index.php)
 
 ## Screenshot
